@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Server...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Starting Server...</h1>
+        <div class="spinner"></div>
+        <p>Please wait while the server starts up</p>
+        <p class="countdown" id="countdown">Checking server...</p>
+        <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.8;">
+            This page will automatically redirect when the server is ready
+        </p>
+    </div>
+
+    <script>
+        let attempts = 0;
+        const maxAttempts = 30; // 30 attempts = 30 seconds
+        
+        function checkServer() {
+            attempts++;
+            document.getElementById('countdown').textContent = `Checking... (${attempts}/${maxAttempts})`;
+            
+            fetch('http://localhost:3000', { 
+                method: 'HEAD',
+                mode: 'no-cors'
+            })
+            .then(() => {
+                // Server is ready, redirect
+                window.location.href = 'http://localhost:3000';
+            })
+            .catch(() => {
+                // Server not ready yet, try again
+                if (attempts < maxAttempts) {
+                    setTimeout(checkServer, 1000);
+                } else {
+                    document.getElementById('countdown').textContent = 'Server is taking longer than expected. Please refresh manually.';
+                    setTimeout(() => {
+                        window.location.href = 'http://localhost:3000';
+                    }, 2000);
+                }
+            });
+        }
+        
+        // Start checking after 2 seconds
+        setTimeout(checkServer, 2000);
+        
+        // Also try direct redirect every 5 seconds as backup
+        setInterval(() => {
+            window.location.href = 'http://localhost:3000';
+        }, 5000);
+    </script>
+</body>
+</html>
+
+
