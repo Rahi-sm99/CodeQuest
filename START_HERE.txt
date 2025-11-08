@@ -1,0 +1,48 @@
+========================================
+   CODE QUEST 2 - HOW TO START
+========================================
+
+OPTION 1: Double-click start.bat (RECOMMENDED)
+   - Just double-click the "start.bat" file
+   - The website will open automatically
+
+OPTION 2: Double-click start.vbs
+   - Double-click "start.vbs" file
+   - Works similar to start.bat
+
+OPTION 3: Create a Desktop Shortcut
+   1. Right-click on "start.bat"
+   2. Select "Create shortcut"
+   3. Drag the shortcut to your Desktop
+   4. Double-click the shortcut anytime to start!
+
+OPTION 4: Use Command Prompt
+   1. Press Windows + R
+   2. Type: cmd
+   3. Press Enter
+   4. Type: cd C:\Users\Asus\Desktop\code-quest-2-main
+   5. Type: start.bat
+   6. Press Enter
+
+OPTION 5: Use Node.js directly
+   1. Open Command Prompt in this folder
+   2. Type: npm install --legacy-peer-deps
+   3. Wait for installation
+   4. Type: npm run dev
+   5. Open browser to: http://localhost:3000
+
+OPTION 6: Pin to Taskbar
+   1. Right-click "start.bat"
+   2. Select "Pin to taskbar"
+   3. Click the icon on taskbar to start anytime!
+
+========================================
+   TROUBLESHOOTING
+========================================
+
+- If you see "npm not found": Install Node.js from https://nodejs.org/
+- If website shows error: Wait 10-15 seconds and refresh the page
+- If PowerShell error: Use Command Prompt instead, or double-click the .bat file
+
+========================================
+
