@@ -7,7 +7,7 @@ CodeQuest is an innovative, interactive platform designed to make learning Data 
 Experience the platform live on Vercel:
 CodeQuest Live App
 
-✨ Features
+ Features
 
 CodeQuest is built to provide a structured, gamified learning experience:
 
